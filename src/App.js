@@ -13,7 +13,7 @@ function App() {
   // RENDER
   return (
     <div className="App">
-      <button onClick={onToggleButton}>Toggle</button>
+      <button onClick={onToggleButton} className="button">Вкл./Выкл. меню</button>
     
     </div>
   );
