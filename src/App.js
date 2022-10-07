@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import './App.css';
 
-const TG = window.Telegram.WebApp;
+
 
 function App() {
   // FUNCTIONS
@@ -9,10 +9,7 @@ function App() {
     TG.ready();
   } )
 
-  const onClose = () => {
-    TG.close()
-    console.log("Window supposed to be closed")
-  }
+
 
   // RENDER
   return (
