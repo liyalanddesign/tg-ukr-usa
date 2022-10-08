@@ -8,13 +8,13 @@ const Form = () => {
     const [subject, setSubject] = useState();
 
     const onChangeCountry = (e) => {
-        setCountry(e.target.alue)
+        setCountry(e.target.value)
     }
     const onChangeStreet = (e) => {
-        setStreet(e.target.alue)
+        setStreet(e.target.value)
     }
     const onChangeSubject = (e) => {
-        setSubject(e.target.alue)
+        setSubject(e.target.value)
     }
 
     return (
