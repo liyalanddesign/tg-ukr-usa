@@ -12,7 +12,7 @@ const Form = () => {
     useEffect( ()=>{
         TG.MainButton.setParams({
             text: 'Отправить данные'
-        })
+        }) 
     });
 
     useEffect( ()=>{
