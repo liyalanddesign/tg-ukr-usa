@@ -7,17 +7,17 @@ const Form = () => {
     const [country, setCountry] = useState();
     const [street, setStreet] = useState();
     const [subject, setSubject] = useState();
-    const TG = useTelegram();
+    const {TG} = useTelegram();
 
     useEffect( ()=>{
         TG.MainButton.setParams({
             text: 'Отправить данные'
         }) 
-    });
+    }, []);
 
     useEffect( ()=>{
         if(!street || !country){
-            TG.mainButton.hide()
+            TG.MainButton.hide()
         } else{
             TG.MainButton.show()
         }
