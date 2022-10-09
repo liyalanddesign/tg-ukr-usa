@@ -1,20 +1,18 @@
-import React, {useState} from "react";
-import './ProductList.css'
+import React, {useState} from 'react';
+import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
-import { useTelegram } from "../../hooks/useTelegram";
+import {useTelegram} from "../../hooks/useTelegram";
+import {useCallback, useEffect} from "react";
 
 const products = [
-    {id:'1',title: 'Лжинсы'     ,price: 5000, description: 'Jeans color is blue' },
-    {id:'2',title: 'Куртка'     ,price: 8000, description: 'Jacket' },
-    {id:'3',title: 'Бейсболка'  ,price: 1300, description: 'Cap for baseball' },
-    {id:'4',title: 'Кеды'       ,price: 1800, description: 'Modrn nice shoes' },
-    {id:'5',title: 'Лоферы'     ,price: 2500, description: 'Sweet nice shoes' },
-    {id:'6',title: 'Свитшот'    ,price: 3400, description: 'Красивый свитшот' },
-    {id:'7',title: 'Шапка'      ,price: 1450, description: 'Зимний головной убор' },
-    {id:'8',title: 'Сумка'      ,price: 2200, description: 'Сумка повседневная' },
-    {id:'9',title: 'Брюки'      ,price: 3100, description: 'Брюки шелковые' },
-    {id:'10',title: 'Часы'      ,price: 12000, description: 'Часы как у Путина' },
-
+    {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые'},
+    {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая'},
+    {id: '3', title: 'Джинсы 2', price: 5000, description: 'Синего цвета, прямые'},
+    {id: '4', title: 'Куртка 8', price: 122, description: 'Зеленого цвета, теплая'},
+    {id: '5', title: 'Джинсы 3', price: 5000, description: 'Синего цвета, прямые'},
+    {id: '6', title: 'Куртка 7', price: 600, description: 'Зеленого цвета, теплая'},
+    {id: '7', title: 'Джинсы 4', price: 5500, description: 'Синего цвета, прямые'},
+    {id: '8', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая'},
 ]
 
 const getTotalPrice = (items = []) => {
@@ -23,10 +21,31 @@ const getTotalPrice = (items = []) => {
     }, 0)
 }
 
-const ProductList = (props) => {
-    
+const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {TG, queryId} = useTelegram();
+
+    const onSendData = useCallback(() => {
+        const data = {
+            products: addedItems,
+            totalPrice: getTotalPrice(addedItems),
+            queryId,
+        }
+        fetch('http://85.119.146.179:8000/web-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+    }, [addedItems])
+
+    useEffect(() => {
+        TG.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            TG.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData])
 
     const onAdd = (product) => {
         const alreadyAdded = addedItems.find(item => item.id === product.id);
@@ -38,7 +57,7 @@ const ProductList = (props) => {
             newItems = [...addedItems, product];
         }
 
-        setAddedItems(newItems);
+        setAddedItems(newItems)
 
         if(newItems.length === 0) {
             TG.MainButton.hide();
@@ -50,21 +69,17 @@ const ProductList = (props) => {
         }
     }
 
-
     return (
         <div className={'list'}>
-            { 
-                products.map(item =>(
-                    <ProductItem
-                        product={item}
-                        onAdd={onAdd}
-                        className={'item'}
-                    />
-                ))
-            }
-            
+            {products.map(item => (
+                <ProductItem
+                    product={item}
+                    onAdd={onAdd}
+                    className={'item'}
+                />
+            ))}
         </div>
-    )
-}
+    );
+};
 
 export default ProductList;
