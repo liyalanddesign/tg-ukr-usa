@@ -53,7 +53,6 @@ const ProductList = (props) => {
 
     return (
         <div className={'list'}>
-            Test msg between
             { 
                 products.map(item =>(
                     <ProductItem
