@@ -1,1 +1,1 @@
-console.log('Hello test script')
+import('./Hello.css')
