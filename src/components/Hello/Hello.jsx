@@ -1,10 +1,12 @@
+import React from "react";
+import {Link} from 'react-router-dom'
 import('./Hello.css')
 
 const Hello = () => {
-
     return(
         <div className={'hello__cntainer'}>Это главная</div>
     );
+
 
     // return (
     //     <div className={'list'}>
