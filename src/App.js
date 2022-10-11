@@ -2,9 +2,11 @@ import './App.css';
 import { useEffect } from 'react';
 import{useTelegram} from './hooks/useTelegram';
 import Header from './components/Header/Header'
-import {Route, Routes} from 'react-router-dom'
+import {Route, Routes, Link} from 'react-router-dom'
 import ProductList from './components/ProductList/ProductList';
 import Form from './components/Form/Form';
+import Hello from './components/Hello/Hello';
+import Roadmap from './components/Roadmap/Roadmap';
 
 function App() {
   const {onToggleButton, TG} = useTelegram();
@@ -17,9 +19,15 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <ul className={'links__list'}>
+          <li><Link to="/">Главная</Link></li>
+          <li><Link to="/form">Помочь</Link></li>
+          <li><Link to="/roadmap">Планы</Link></li>
+      </ul>
       <Routes>
-        <Route index element={<ProductList />} />
-        <Route path={'form'} element={<Form />} />
+        <Route index element={<Hello />} />
+        <Route path={'/roadmap'} element={<Roadmap />} />
+        <Route path={'/form'} element={<Form />} />
       </Routes>
     </div>
   );

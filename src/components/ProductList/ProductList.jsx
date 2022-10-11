@@ -20,7 +20,6 @@ const getTotalPrice = (items = []) => {
         return acc += item.price
     }, 0)
 }
-
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {TG, queryId} = useTelegram();
