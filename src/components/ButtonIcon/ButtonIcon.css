@@ -1,0 +1,11 @@
+.button__icon{
+    display: flex;
+    width: 120px;
+    height: 120px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+}

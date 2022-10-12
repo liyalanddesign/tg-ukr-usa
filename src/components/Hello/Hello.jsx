@@ -4,7 +4,9 @@ import('./Hello.css')
 
 const Hello = () => {
     return(
-        <div className={'hello__cntainer'}>Это главная</div>
+        <div>
+            <div className={'hello__cntainer'}>Это главная</div>
+        </div>
     );
 
 

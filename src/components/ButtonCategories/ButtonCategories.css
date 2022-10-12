@@ -1,0 +1,6 @@
+.button__categories{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
