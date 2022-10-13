@@ -1,19 +1,26 @@
-.roadmap__container{
-    padding: 30px 10px;
-}
-.roadmap__head{
-    padding-top: 40px;
-    padding-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.item{
+
+    margin-bottom: 12px;
 }
 
-.roadmap__head p{
-    padding-top: 16px;
+.item h3{
+    background: #f0f0f0;
+    padding: 8px 6px;
 }
 
-.roadmap__item{
-    padding: 20px 10px 40px;
+.item p{
+    margin-top: 8px;
+    line-height: 120%;
+    font-size: 13px;
 }
 
+.item ul{
+    padding-left: 20px;
+    margin-top: 10px;
+    list-style: disc!important;
+}
+
+.item ul.list li{
+    font-size: 15px;
+    /* margin-top: 10px; */
+}

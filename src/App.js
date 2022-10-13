@@ -9,6 +9,7 @@ import Roadmap from './components/Roadmap';
 import ButtonIcon from './components/ButtonIcon';
 
 function App() {
+
   const {onToggleButton, TG} = useTelegram();
 
   useEffect( ()=>{
@@ -21,13 +22,11 @@ function App() {
       <Header />
       <ul className={'links__list'}>
           <li><Link to="/">Главная</Link></li>
-          <li><Link to="https://bot.creative-routine.com/forms/">Помочь</Link></li>
           <li><Link to="/roadmap">Планы</Link></li>
       </ul>
       <Routes>
-        <Route index element={<Hello />} />
+        <Route index  element={<Hello />} />
         <Route path={'/roadmap'} element={<Roadmap />} />
-        <Route path={'/form'} element={<Form />} />
       </Routes>
     </div>
   );

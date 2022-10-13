@@ -9,6 +9,13 @@ body{
   color: var(--tg-theme-text-color);
   font-family: sans-serif;
   font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 160%;
+  color: #262626;
+}
+
+.color-light{
+  color: #636363;
 }
 
 .button{
@@ -35,4 +42,10 @@ body{
   font-weight: 600;
   text-transform: uppercase;
   
+}
+.text-big{
+  font-size: 18px;
+  font-style: italic;
+  margin-bottom: 16px;
+  color: #636363;
 }
